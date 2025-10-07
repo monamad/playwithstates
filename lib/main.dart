@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:playwithstates/A/page_a.dart';
+import 'package:playwithstates/di/service_locator.dart';
 
 void main() {
+  setupServiceLocator();
   runApp(const MyApp());
 }
 

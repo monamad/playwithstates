@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:playwithstates/B/counter_provider.dart';
 import 'package:playwithstates/B/page_b.dart';
+import 'package:playwithstates/di/service_locator.dart';
+import 'package:provider/provider.dart';
 
 class PageA extends StatelessWidget {
   const PageA({super.key});
@@ -12,7 +15,7 @@ class PageA extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'Page a',
+              'Page A',
               style: TextStyle(fontSize: 54, color: Colors.purple),
             ),
           ),
@@ -20,7 +23,12 @@ class PageA extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PageB()),
+                MaterialPageRoute(
+                  builder: (context) => ChangeNotifierProvider(
+                    create: (context) => serviceLocator<CounterProvider>(),
+                    child: const PageB(),
+                  ),
+                ),
               );
             },
             child: const Text('Go to B'),
